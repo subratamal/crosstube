@@ -6,8 +6,8 @@ var ReactRouter = require("react-router");
 var VideoApi = require('../api/VideoApi');
 
 var VideoActions = {
-    getAllVideos() {
-        VideoApi.getAllVideos();
+    getAllVideos(sessionId) {
+        VideoApi.getAllVideos(sessionId);
     },
 
     searchVideos(size) {

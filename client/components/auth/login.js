@@ -3,6 +3,8 @@
 var React = require('react');
 var Router = require('react-router');
 var AuthenticationAction = require('../../actions/authAction');
+var AuthStore = require('../../stores/authStore');
+var toastr = require('toastr');
 
 var LoginPage = React.createClass({
 
@@ -27,6 +29,15 @@ var LoginPage = React.createClass({
 
   authenticate(){
     AuthenticationAction.authenticate(this.state.user);
+    debugger;
+    var sessionId = AuthStore.getSessionId();
+    if(sessionId != undefined && sessionId != ''){
+        this.transitionTo('videos',{sessionId:sessionId});
+    }else{
+      debugger;
+      toastr.error("Authentication failed");
+    }
+
   },
   render(){
     return(

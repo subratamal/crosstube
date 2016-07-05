@@ -22,14 +22,20 @@ var AuthStore = assign({},EventEmitter.prototype,{
 
   emitChange(){
     this.emit(CHANGE_EVENT);
+  },
+  getSessionId(){
+    debugger;
+    return _sessionId;
   }
 });
 
 Dispatcher.register(function(state){
   var actionType =  state.type,payload = state.payload;
   switch (actionType) {
-    case ActionTypes.USER_AUTHENTICATED:
+    case ActionTypes.USER_AUTHENTICATION_RESPONSE:
       console.log("user authenticated");
+      debugger;
+      _sessionId = payload.sessionData.sessionId;
       AuthStore.emitChange();
       break;
     case ActionTypes.USER_NOT_AUTHENTICATED:
@@ -40,3 +46,5 @@ Dispatcher.register(function(state){
 
   }
 });
+
+module.exports = AuthStore;
