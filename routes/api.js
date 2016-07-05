@@ -3,6 +3,11 @@ var videos = require('../controllers/videos');
 var helpers = require('../helpers/helperFunctions');
 
 var routesAPI = function(app){
+	app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 	//user routes
 	app.post('/user/auth', users.auth);
 	app.get('/user/logout', helpers.isAuthenticated, users.logout);
