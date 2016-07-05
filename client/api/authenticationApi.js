@@ -17,7 +17,7 @@ var AuthenticationApi = {
         });
       },
       error:function(data){
-        Dispatcher.dispath({
+        Dispatcher.dispatch({
           actionType: ActionTypes.USER_NOT_AUTHENTICATED,
           sessionData:null
         });
