@@ -8,7 +8,7 @@ var Route = Router.Route;
 
 var routes = (
 		<Route name="app" path="/" handler={require('./components/app')}>
-			<DefaultRoute handler={require('./components/auth/login')} />
+			<DefaultRoute handler={require('./components/homePage')} />
 		</Route>
 	);
 

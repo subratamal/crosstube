@@ -27,12 +27,12 @@ var VideoList = React.createClass({
   render() {
     function createVideoCard(videoData){
       return(
-        <VideoCard key = {videoData.id} videoData={videoData}/>
+        <VideoCard key={videoData.id} videoData={videoData}/>
       );
     }
 
     return(
-      <div>
+      <div className="video-list">
         {this.state ? this.state.data.map(createVideoCard, this) : ""}
       </div>
     );

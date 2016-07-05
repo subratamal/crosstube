@@ -6,7 +6,7 @@ var ReactRouter = require('react-router');
 var VideoTitle = React.createClass({
   render(){
     return(
-      <div>
+      <div className="text-center top10">
         {this.props.title}
       </div>
     );

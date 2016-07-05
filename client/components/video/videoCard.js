@@ -6,14 +6,15 @@ var VideoTitle = require('./VideoTitle');
 var VideoRating = require('./videoRating');
 var VideoPlayer = require('./videoPlayer');
 var VideoDescription = require('./videoDesc');
+var avg = require('../../utils/helpers');
 
 var VideoCard = React.createClass({
   render(){
     return(
-      <div>
+      <div className="col-md-2 video-card-styles top50 left25 right25">
         <VideoTitle title = {this.props.videoData.name}/>
         <VideoPlayer url = {this.props.videoData.url}/>
-        <VideoRating rating = {this.props.videoData.ratings}/>
+        <VideoRating ratings = {avg(this.props.videoData.ratings)}/>
         <VideoDescription description = {this.props.videoData.description}/>
       </div>
     );
