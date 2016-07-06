@@ -6,10 +6,11 @@ var ReactRouter = require('react-router');
 var VideoDescription = React.createClass({
   render(){
     return(
-      <div>
+      <div className="ellipsis top10 left25 right25">
+            {this.props.description}
       </div>
     );
   }
 });
 
-module.exports=VideoDescription;
+module.exports = VideoDescription;

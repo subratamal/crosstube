@@ -2,12 +2,12 @@
 
 var React = require('react');
 var ReactRouter = require('react-router');
+var Rating = require('react-rating');
 
 var VideoRating = React.createClass({
   render(){
     return(
-      <div>
-      </div>
+      <Rating className="dsp-ib top10 left25" initialRate={this.props.ratings}/>
     );
   }
 });

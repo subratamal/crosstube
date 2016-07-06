@@ -20,6 +20,7 @@ var config ={
 		css : [
 			'node_modules/bootstrap/dist/css/bootstrap.min.css',
 			'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
+			'client/components/video/video.css',
 			'node_modules/toastr/toastr.scss'
 			],
 		images: './src/public/images',

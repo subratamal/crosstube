@@ -7,9 +7,9 @@ var video = require('video.js');
 var VideoPlayer = React.createClass({
   render(){
     return(
-      <div>
-      <video id="really-cool-video" class="video-js vjs-default-skin" controls
-            preload="auto" width="640" height="264">
+      <div className="top10">
+      <video id="really-cool-video" className="video-js vjs-default-skin center-block" controls
+            preload="auto" width="70%" height="50%">
             <source src={'http://localhost:3000/' + this.props.url} type="video/mp4" />
             <p class="vjs-no-js">
                 To view this video please enable JavaScript, and consider upgrading to a web browser
