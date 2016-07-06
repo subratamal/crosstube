@@ -27,8 +27,8 @@ var VideoStore = assign({}, EventEmitter.prototype, {
 		return _videos;
 	},
 
-	getAllVideosInitialLoad() {
-		return VideoActions.getAllVideos();
+	getAllVideosInitialLoad(sessinoId) {
+		return VideoActions.getAllVideos(sessionId);
 	},
 
 	getVideoById(id){
@@ -41,14 +41,16 @@ var VideoStore = assign({}, EventEmitter.prototype, {
 });
 
 Dispatcher.register(function(state) {
+	debugger;
 	var actionType = state.type, payload = state.payload;
-
 	switch(actionType){
 		case ActionTypes.INITIALIZE:
 			_videos = payload.videos;
+			VideoStore.emitChange();
 			break;
 		case ActionTypes.VIDEOS_LOADED:
 			_videos = payload.videos;
+			VideoStore.emitChange();
 			break;
 		case ActionTypes.VIDEOS_LOAD_FAILED:
 			break;
@@ -65,7 +67,7 @@ Dispatcher.register(function(state) {
 			//no op
 	}
 
-	VideoStore.emitChange();
+
 });
 
 module.exports = VideoStore;

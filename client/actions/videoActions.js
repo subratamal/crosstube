@@ -8,8 +8,8 @@ var ActionTypes = require('../constants/actionTypes');
 // var VideoStore = require('../stores/videoStore');
 
 var VideoActions = {
-    getAllVideos() {
-        VideoApi.getAllVideos();
+    getAllVideos(sessionId) {
+        VideoApi.getAllVideos(sessionId);
     },
 
     getVideoById(id) {

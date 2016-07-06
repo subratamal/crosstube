@@ -8,7 +8,7 @@ var VideoStore = require('../../stores/videoStore');
 var VideoList = React.createClass({
 
   getInitialState(){
-    VideoStore.getAllVideosInitialLoad();
+    VideoStore.getAllVideosInitialLoad(this.props.param.sessionId);
     return null;
   },
 

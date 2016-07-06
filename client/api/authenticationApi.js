@@ -12,14 +12,18 @@ var AuthenticationApi = {
       data : userCreds,
       success:function(data){
         Dispatcher.dispatch({
-          actionType: ActionTypes.USER_AUTHENTICATED,
-          sessionData: data
+          type: ActionTypes.USER_AUTHENTICATION_RESPONSE,
+          payload : {
+            sessionData: data
+          }
         });
       },
       error:function(data){
-        Dispatcher.dispath({
-          actionType: ActionTypes.USER_NOT_AUTHENTICATED,
-          sessionData:null
+        Dispatcher.dispatch({
+          type: ActionTypes.USER_NOT_AUTHENTICATED,
+          payload : {
+            sessionData:null
+          }
         });
       }
     });

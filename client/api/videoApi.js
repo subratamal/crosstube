@@ -16,9 +16,10 @@ var _clone = function(item) {
 };
 
 var VideoApi = {
-	getAllVideos: function() {
+	getAllVideos: function(sessionId) {
+		var fetchUrl = RestConfig.VIDEOS_FETCH_URL+"&sessionId="+sessionId;
 		 $.ajax({
-		 	url: RestConfig.VIDEOS_FETCH_URL,
+		 	url: fetchUrl,
 		 	dataType: 'json',
 		 	cache: false,
 		 	success: function(data){
