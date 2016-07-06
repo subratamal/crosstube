@@ -13,4 +13,4 @@ var VideoDescription = React.createClass({
   }
 });
 
-module.exports=VideoDescription;
+module.exports = VideoDescription;

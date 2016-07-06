@@ -7,5 +7,7 @@ module.exports = keyMirror({
 	VIDEOS_LOADED: null,
 	VIDEOS_LOAD_FAILED: null,
 	USER_AUTHENTICATED: null,
-	USER_NOT_AUTHENTICATED: null
+	USER_NOT_AUTHENTICATED: null,
+	VIDEO_DETAILS: null,
+	VIDEO_DETAILS_FAILED: null
 });

@@ -32,11 +32,11 @@ var VideoStore = assign({}, EventEmitter.prototype, {
 	},
 
 	getVideoById(id){
-		return _.find(_videos,{id:parseInt(id)});
+		return _.find(_videos, {id: id});
 	},
 
   	getAllVideosExceptById(id){
-    	return _.find(_videos,{id:parseInt(id)});
+    	return _.find(_videos, {id: id});
   	}
 });
 
@@ -51,6 +51,15 @@ Dispatcher.register(function(state) {
 			_videos = payload.videos;
 			break;
 		case ActionTypes.VIDEOS_LOAD_FAILED:
+			break;
+		case ActionTypes.VIDEO_DETAILS:
+			_.map(_videos, function(video){
+				if(payload.video._id === video._id) {
+					video.currentlyPlaying = true;
+				}
+			});
+			break;
+		case ActionTypes.VIDEO_DETAILS_FAILED:
 			break;
 		default:
 			//no op

@@ -23,8 +23,11 @@
 .video-card-styles {
     border: 1px #ccc solid;
     background-color: #eee;
-    height: 325px;
     padding: 0px;
+}
+
+.height-small {
+    height: 325px;
 }
 
 /* styles for '...' */

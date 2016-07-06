@@ -11,8 +11,8 @@ var avg = require('../../utils/helpers');
 var VideoCard = React.createClass({
   render(){
     return(
-      <div className="col-md-2 video-card-styles top50 left25 right25">
-        <VideoTitle title = {this.props.videoData.name}/>
+      <div className="col-md-2 video-card-styles height-small top50 left25 right25">
+        <VideoTitle title = {this.props.videoData.name} id = {this.props.videoData._id}/>
         <VideoPlayer url = {this.props.videoData.url}/>
         <VideoRating ratings = {avg(this.props.videoData.ratings)}/>
         <VideoDescription description = {this.props.videoData.description}/>

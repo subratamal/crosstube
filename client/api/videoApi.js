@@ -44,7 +44,31 @@ var VideoApi = {
 
 	getVideoById: function(id) {
 		var video = _.find(videos, {id: id});
-		return _clone(video);
+		if(video) {
+			return _clone(video);
+		}
+
+		$.ajax({
+		   url: RestConfig.VIDEO_FETCH_URL + id,
+		   dataType: 'json',
+		   cache: false,
+		   success: function(data){
+			   Dispatcher.dispatch({
+					   type: ActionTypes.VIDEO_DETAILS,
+					   payload:{
+						   videos: data
+					   }
+			   });
+		   },
+		   error:function(xhr,status,err){
+			   Dispatcher.dispatch({
+					   type: ActionTypes.VIDEO_DETAILS_FAILED,
+					   payload:{
+						   videos: null
+					   }
+			   });
+		   }
+		});
 	}
 };
 module.exports = VideoApi;
