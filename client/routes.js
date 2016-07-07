@@ -1,17 +1,16 @@
 "use strict";
 
 var React = require('react');
-var Router = require('react-router');
-var DefaultRoute = Router.DefaultRoute;
-var Redirect = Router.Redirect;
-var Route = Router.Route;
-var browserHistory = Router.browserHistory;
+var ReactRouter = require('react-router');
+var Router = ReactRouter.Router
+var Route = ReactRouter.Route;
+var hashHistory = ReactRouter.hashHistory;
+var AuthHandler = require('./components/auth/authHandler');
 
 var routes = (
-		<Route name="AuthHandler" handler={require('./components/auth/authHandler')}>
-			<DefaultRoute name="videos" path="/videos" handler={require('./components/video/videoList')}/>
-			<Route name="Login" path="./components/auth/login"/>
-		</Route>
+	<Router history={hashHistory}>
+		<Route path="/" component={AuthHandler}/>
+	</Router>
 );
 
 module.exports=routes;
