@@ -54,7 +54,7 @@ Dispatcher.register(function(state) {
 			break;
 		case ActionTypes.VIDEO_DETAILS:
 			_.map(_videos, function(video){
-				if(payload.video._id === video._id) {
+				if(payload.video.data._id === video._id) {
 					video.currentlyPlaying = true;
 				}
 			});
