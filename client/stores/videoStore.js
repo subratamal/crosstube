@@ -10,7 +10,7 @@ var CHANGE_EVENT = 'change';
 
 var _videos = [];
 
-var VideoStore = assign({}, EventEmitter.prototype, {
+var videoStore = assign({}, EventEmitter.prototype, {
 	addChangeListener(callback) {
 		this.on(CHANGE_EVENT, callback);
 	},
@@ -65,7 +65,7 @@ Dispatcher.register(function(state) {
 			//no op
 	}
 
-	VideoStore.emitChange();
+	videoStore.emitChange();
 });
 
-module.exports = VideoStore;
+module.exports = videoStore;

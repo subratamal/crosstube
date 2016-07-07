@@ -6,16 +6,12 @@ var Dispatcher = require('../dispatcher/appDispatcher');
 var ActionTypes = require('../constants/actionTypes');
 var _ = require('lodash');
 
-//This would be performed on the server in a real app. Just stubbing in.
-var _generateId = function(article) {
-	return article.title.toLowerCase();
-};
-
+// return cloned copy so that the item is passed by value instead of by reference
 var _clone = function(item) {
-	return JSON.parse(JSON.stringify(item)); //return cloned copy so that the item is passed by value instead of by reference
+	return JSON.parse(JSON.stringify(item));
 };
 
-var VideoApi = {
+var videoApi = {
 	getAllVideos: function() {
 		 $.ajax({
 		 	url: RestConfig.VIDEOS_FETCH_URL,
@@ -56,7 +52,7 @@ var VideoApi = {
 			   Dispatcher.dispatch({
 					   type: ActionTypes.VIDEO_DETAILS,
 					   payload:{
-						   videos: data
+						   video: data
 					   }
 			   });
 		   },
@@ -64,11 +60,12 @@ var VideoApi = {
 			   Dispatcher.dispatch({
 					   type: ActionTypes.VIDEO_DETAILS_FAILED,
 					   payload:{
-						   videos: null
+						   video: null
 					   }
 			   });
 		   }
 		});
 	}
 };
-module.exports = VideoApi;
+
+module.exports = videoApi;

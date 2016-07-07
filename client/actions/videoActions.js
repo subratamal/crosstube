@@ -3,13 +3,12 @@
 var React = require("react");
 var Dispatcher = require('../dispatcher/appDispatcher');
 var ReactRouter = require("react-router");
-var VideoApi = require('../api/VideoApi');
+var videoApi = require('../api/videoApi');
 var ActionTypes = require('../constants/actionTypes');
-// var VideoStore = require('../stores/videoStore');
 
 var VideoActions = {
     getAllVideos() {
-        VideoApi.getAllVideos();
+        videoApi.getAllVideos();
     },
 
     getVideoById(id) {
@@ -22,12 +21,12 @@ var VideoActions = {
                 }
             })
         } else {
-            VideoApi.getVideoById(id);
+            videoApi.getVideoById(id);
         }
     },
 
     searchVideos(size) {
-      VideoApi.getAllVideos(size);
+      videoApi.getAllVideos(size);
     }
 }
 

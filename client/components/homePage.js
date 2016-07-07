@@ -4,7 +4,7 @@ var React = require('react');
 var Router = require('react-router');
 var Header = require('./common/header');
 var VideoSearchActions = require("../actions/videoActions");
-var VideoStore = require('../stores/videoStore');
+var videoStore = require('../stores/videoStore');
 var VideoList = require('./video/videoList');
 var Link = Router.Link;
 

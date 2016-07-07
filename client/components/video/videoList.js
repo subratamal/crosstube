@@ -3,25 +3,25 @@
 var React = require('react');
 var ReactRouter = require('react-router');
 var VideoCard = require('./videoCard');
-var VideoStore = require('../../stores/videoStore');
+var videoStore = require('../../stores/videoStore');
 
 var VideoList = React.createClass({
 
   getInitialState(){
-    VideoStore.getAllVideosInitialLoad();
+    videoStore.getAllVideosInitialLoad();
     return null;
   },
 
   componentDidMount(){
-    VideoStore.addChangeListener(this._onChange);
+    videoStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function() {
-    VideoStore.removeChangeListener(this._onChange);
+    videoStore.removeChangeListener(this._onChange);
   },
 
   _onChange: function() {
-    this.setState(VideoStore.getAllVideos());
+    this.setState(videoStore.getAllVideos());
   },
 
   render() {
