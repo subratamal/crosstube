@@ -32,9 +32,8 @@
     "jquery": "^2.2.0",
     "lodash": "^4.0.0",
     "object-assign": "^4.0.1",
-    "react": "^0.13.3",
-    "react-rating": "^0.3.0",
-    "react-router": "^0.13.3",
+    "react": "^15.2.0",
+    "react-router": "2.5.2",
     "superagent": "latest",
     "toastr": "^2.1.2"
   }

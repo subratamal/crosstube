@@ -8,11 +8,9 @@ var Route = Router.Route;
 var browserHistory = Router.browserHistory;
 
 var routes = (
-		<Route name="app" path="/" handler={require('./components/app')}>
-			<DefaultRoute handler={require('./components/homePage')} />
-			<Route name="videoDetails" path="/video/:id"
-					handler={require('./components/video/videoDetails')}>
-			</Route>
+		<Route name="AuthHandler" handler={require('./components/auth/authHandler')}>
+			<DefaultRoute name="videos" path="/videos" handler={require('./components/video/videoList')}/>
+			<Route name="Login" path="./components/auth/login"/>
 		</Route>
 );
 

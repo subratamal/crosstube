@@ -24,7 +24,6 @@ var AuthStore = assign({},EventEmitter.prototype,{
     this.emit(CHANGE_EVENT);
   },
   getSessionId(){
-    debugger;
     return _sessionId;
   }
 });

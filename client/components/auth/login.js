@@ -29,15 +29,17 @@ var LoginPage = React.createClass({
 
   authenticate(){
     AuthenticationAction.authenticate(this.state.user);
-    debugger;
     var sessionId = AuthStore.getSessionId();
     if(sessionId != undefined && sessionId != ''){
         this.transitionTo('videos',{sessionId:sessionId});
     }else{
-      debugger;
       toastr.error("Authentication failed");
     }
+  },
 
+  componentWillMount(){
+    var sessionId = AuthStore.getSessionId;
+    this.setState({sessionId:sessionId});
   },
   render(){
     return(
