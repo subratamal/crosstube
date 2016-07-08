@@ -9,6 +9,7 @@ var source = require('vinyl-source-stream');	// Use conventional text stream wit
 var concat = require('gulp-concat'); 			//Conactenation
 var lint = require('gulp-eslint'); 				//Lint our JS file as well as JSX
 var exec = require('child_process').exec;
+var history = require('connect-history-api-fallback');
 
 var config ={
 	port: 9006,
@@ -20,7 +21,7 @@ var config ={
 		css : [
 			'node_modules/bootstrap/dist/css/bootstrap.min.css',
 			'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
-			'client/components/video/video.css',
+			'client/components/client.css',
 			'node_modules/toastr/toastr.scss'
 			],
 		images: './src/public/images',
@@ -35,7 +36,12 @@ gulp.task("connect",function(){
 		root: ["frontend-target/dist"],
 		port: config.port,
 		base: config.devUrl,
-		livereload: true
+		livereload: true,
+		middleware : function(connect,opt){
+			return [
+				history({})
+			]
+		}
 	});
 });
 

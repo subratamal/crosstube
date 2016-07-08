@@ -5,7 +5,7 @@ var React = require('react');
 var VideoPlayer = React.createClass({
   render(){
     return(
-      <div>Play Video</div>
+      <div>Play Video : {this.props.params.videoId}</div>
     );
   }
 });
