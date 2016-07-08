@@ -21,7 +21,7 @@ var videoApi = {
 		 		Dispatcher.dispatch({
 		 				type: ActionTypes.VIDEOS_LOADED,
 		 				payload:{
-		 					videos: data,
+		 					videos: data.data,
 		 					dataFetchState: "ready",
 		 				}
 		 		});

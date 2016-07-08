@@ -24,7 +24,7 @@ var videoStore = assign({}, EventEmitter.prototype, {
 	},
 
 	getAllVideos() {
-		return _videos;
+		return { videos: _videos };
 	},
 
 	getAllVideosInitialLoad() {
@@ -32,7 +32,7 @@ var videoStore = assign({}, EventEmitter.prototype, {
 	},
 
 	getVideoById(id){
-		return _.find(_videos, {id: id});
+		return _.find(_videos, {_id: id});
 	},
 
   	getAllVideosExceptById(id){
@@ -53,10 +53,13 @@ Dispatcher.register(function(state) {
 		case ActionTypes.VIDEOS_LOAD_FAILED:
 			break;
 		case ActionTypes.VIDEO_DETAILS:
+			// TODO: Make this in immutative data structure.
 			_.map(_videos, function(video){
 				if(payload.video.data._id === video._id) {
 					video.currentlyPlaying = true;
+					return;
 				}
+				video.currentlyPlaying = false;
 			});
 			break;
 		case ActionTypes.VIDEO_DETAILS_FAILED:

@@ -30,6 +30,10 @@
     height: 325px;
 }
 
+.selected-video {
+    border: 5px solid green;
+}
+
 /* styles for '...' */
 .ellipsis {
   overflow: hidden;

@@ -7,11 +7,6 @@ var videoStore = require('../../stores/videoStore');
 
 var VideoList = React.createClass({
 
-  getInitialState(){
-    videoStore.getAllVideosInitialLoad();
-    return null;
-  },
-
   componentDidMount(){
     videoStore.addChangeListener(this._onChange);
   },
@@ -27,13 +22,15 @@ var VideoList = React.createClass({
   render() {
     function createVideoCard(videoData){
       return(
-        <VideoCard key={videoData.id} videoData={videoData}/>
+        <VideoCard key={videoData.id} videoData={videoData}
+            gridClassName={'col-md-12'}
+            selectedVideoStyle={videoData.currentlyPlaying ? 'selected-video' : ''}/>
       );
     }
 
     return(
-      <div className="video-list">
-        {this.state ? this.state.videos.map(createVideoCard, this) : ""}
+      <div className="video-list col-md-3">
+        {this.props.videos ? this.props.videos.map(createVideoCard, this) : ""}
       </div>
     );
   }
