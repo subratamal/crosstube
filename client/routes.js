@@ -10,6 +10,8 @@ var AuthHandler = require('./components/auth/authHandler');
 var routes = (
 	<Router history={hashHistory}>
 		<Route path="/" component={AuthHandler}/>
+		<Route path="/videos" component={Videos}/>
+		<Route path="/videoPlayer" component={VideoPlayer}/>
 	</Router>
 );
 
