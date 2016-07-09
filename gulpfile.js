@@ -6,9 +6,12 @@ var open = require('gulp-open'); 				// open url in a browser
 var browserify = require('browserify'); 		//Bundle JS for browser
 var reactify = require('reactify'); 			// Compile JSX
 var source = require('vinyl-source-stream');	// Use conventional text stream with gulp
+var buffer = require('vinyl-buffer');
 var concat = require('gulp-concat'); 			//Conactenation
 var lint = require('gulp-eslint'); 				//Lint our JS file as well as JSX
 var exec = require('child_process').exec;
+var babel = require('babelify');
+var sourcemaps = require('gulp-sourcemaps');
 
 var config ={
 	port: 9006,
@@ -60,10 +63,15 @@ gulp.task("html",function(){
 
 gulp.task("js",function(){
 	browserify(config.paths.mainJS)
-		.transform(reactify)
+		.transform(babel.configure({
+	        presets: ["es2015", "react"]
+	    }))
 		.bundle()
 		.on('error',console.error.bind(console))
 		.pipe(source('bundle.js'))
+		.pipe(buffer())
+		.pipe(sourcemaps.init({ loadMaps: true }))
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(config.paths.dist + "/scripts"))
 		.pipe(connect.reload());
 });
@@ -90,8 +98,8 @@ gulp.task("lint",function(){
 
 gulp.task("watch",function(){
 	gulp.watch(config.paths.html, ['html']);
-	gulp.watch(config.paths.js, ['js','lint']);
+	gulp.watch(config.paths.js, ['js']);
 	gulp.watch(config.paths.css, ['css']);
 });
 
-gulp.task("default",['client','server','html','js','css','images','lint','watch']);
+gulp.task("default",['client','server','html','js','css','images','watch']);

@@ -5,6 +5,7 @@ var RestConfig = require('../constants/restConfig');
 var Dispatcher = require('../dispatcher/appDispatcher');
 var ActionTypes = require('../constants/actionTypes');
 var _ = require('lodash');
+import http from 'superagent';
 
 // return cloned copy so that the item is passed by value instead of by reference
 var _clone = function(item) {
@@ -13,20 +14,19 @@ var _clone = function(item) {
 
 var videoApi = {
 	getAllVideos: function() {
-		 $.ajax({
-		 	url: RestConfig.VIDEOS_FETCH_URL,
-		 	dataType: 'json',
-		 	cache: false,
-		 	success: function(data){
+		 http
+		 .get(RestConfig.VIDEOS_FETCH_URL)
+		 .then(
+		 	function(res){
 		 		Dispatcher.dispatch({
 		 				type: ActionTypes.VIDEOS_LOADED,
 		 				payload:{
-		 					videos: data.data,
+		 					videos: res.body.data,
 		 					dataFetchState: "ready",
 		 				}
 		 		});
 		 	},
-		 	error:function(xhr,status,err){
+		 	function(xhr,status,err){
 		 		Dispatcher.dispatch({
 		 				type: ActionTypes.VIDEOS_LOAD_FAILED,
 		 				payload:{
@@ -35,7 +35,7 @@ var videoApi = {
 		 				}
 		 		});
 		 	}
-		 });
+		 );
 	},
 
 	getVideoById: function(id) {
@@ -44,19 +44,18 @@ var videoApi = {
 			return _clone(video);
 		}
 
-		$.ajax({
-		   url: RestConfig.VIDEO_FETCH_URL + id,
-		   dataType: 'json',
-		   cache: false,
-		   success: function(data){
+		http
+		.get(RestConfig.VIDEO_FETCH_URL + id)
+		.then(
+		   function(res){
 			   Dispatcher.dispatch({
 					   type: ActionTypes.VIDEO_DETAILS,
 					   payload:{
-						   video: data
+						   video: res.body
 					   }
 			   });
 		   },
-		   error:function(xhr,status,err){
+		   function(xhr,status,err){
 			   Dispatcher.dispatch({
 					   type: ActionTypes.VIDEO_DETAILS_FAILED,
 					   payload:{
@@ -64,7 +63,7 @@ var videoApi = {
 					   }
 			   });
 		   }
-		});
+		);
 	}
 };
 

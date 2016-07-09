@@ -1,9 +1,8 @@
 /*eslint-disable strict*/ // Need global variable, disabling check
 
-var React = require('react');
-var RouteHandler = require('react-router').RouteHandler;
-var Header = require('./common/header');
-$ = jQuery = require('jquery');
+import React from 'react';
+import { RouteHandler } from 'react-router';
+import Header from './common/header';
 
 var App = React.createClass({
 	render(){
