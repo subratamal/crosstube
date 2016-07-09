@@ -20,16 +20,17 @@ var VideoList = React.createClass({
   },
 
   render() {
-    function createVideoCard(videoData){
+    function createVideoCard(videoData, idx){
       return(
         <VideoCard key={videoData.id} videoData={videoData}
             gridClassName={'col-md-12'}
-            selectedVideoStyle={videoData.currentlyPlaying ? 'selected-video' : ''}/>
+            selectedVideoStyle={videoData.currentlyPlaying ? 'selected-video' : ''}
+            otherStyles={idx==0 ? 'top0' : 'top10'}/>
       );
     }
 
     return(
-      <div className="video-list col-md-3">
+      <div className="video-list col-md-3 video-details-list">
         {this.props.videos ? this.props.videos.map(createVideoCard, this) : ""}
       </div>
     );

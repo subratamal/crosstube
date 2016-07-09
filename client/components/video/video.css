@@ -1,5 +1,9 @@
 /* Additional css for video list */
 
+.top0 {
+    margin-top: 0px;
+}
+
 .top10 {
     margin-top: 10px;
 }
@@ -32,6 +36,12 @@
 
 .selected-video {
     border: 5px solid green;
+}
+
+.video-details-list {
+    height: 950px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /* styles for '...' */
